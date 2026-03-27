@@ -6,7 +6,7 @@ export const routes: Routes = [
         path: 'dashboard',
         loadComponent: () => loadRemoteModule({
             type: 'module',
-            remoteEntry: 'http://localhost:4201/remoteEntry.js',
+            remoteEntry: 'https://abdurrahman21.github.io/microFrontEnd_app/dashboard/remoteEntry.js',
             exposedModule: './Component'
         }).then(m => m.App)
     }
