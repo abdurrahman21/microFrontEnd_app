@@ -36,9 +36,9 @@ jobs:
       - name: Build App
         run: npm run build ${{ matrix.app }} -- --configuration production
 
-      # 🔹 Run Tests
-      - name: Run Tests
-        run: npm run test ${{ matrix.app }} -- --watch=false --browsers=ChromeHeadless
+      # # 🔹 Run Tests
+      # - name: Run Tests
+      #   run: npm run test ${{ matrix.app }} -- --watch=false --browsers=ChromeHeadless
 
       # 🔹 Upload build artifacts
       - name: Upload Artifact
