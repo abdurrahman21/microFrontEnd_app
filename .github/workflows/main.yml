@@ -2,17 +2,11 @@ name: microFrontEnd_app
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-  build-test:
+  build-deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        app: [shell, dashboard]
 
     steps:
       - name: Checkout Code
@@ -21,7 +15,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22.19.0
+          node-version: 22
 
       - name: Cache Dependencies
         uses: actions/cache@v4
@@ -32,17 +26,23 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      # 🔹 Build each app (parallel via matrix)
-      - name: Build App
-        run: npm run build ${{ matrix.app }} -- --configuration production
+      # 🔥 Build BOTH apps
+      - name: Build Shell
+        run: npm run build shell -- --configuration production --base-href=/microFrontEnd_app/shell/
 
-      # # 🔹 Run Tests
-      # - name: Run Tests
-      #   run: npm run test ${{ matrix.app }} -- --watch=false --browsers=ChromeHeadless
+      - name: Build Dashboard (Remote)
+        run: npm run build dashboard -- --configuration production --base-href=/microFrontEnd_app/dashboard/
 
-      # 🔹 Upload build artifacts
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      # 🔥 Prepare deploy folder
+      - name: Prepare Deploy Folder
+        run: |
+          mkdir deploy
+          cp -r dist/shell deploy/shell
+          cp -r dist/dashboard deploy/dashboard
+
+      # 🚀 Deploy to GitHub Pages
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: ${{ matrix.app }}-dist
-          path: dist/${{ matrix.app }}/
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
