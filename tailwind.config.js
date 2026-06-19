@@ -1,0 +1,121 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./projects/shell/src/**/*.{html,ts}",
+    "./projects/product/src/**/*.{html,ts}",
+    "./projects/order/src/**/*.{html,ts}",
+    "./projects/cart/src/**/*.{html,ts}",
+    "./projects/auth/src/**/*.{html,ts}",
+    "./projects/dashboard/src/**/*.{html,ts}",
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        // Material Design 3 Color System - Arboretum Market
+        'primary': '#114900',
+        'on-primary': '#ffffff',
+        'primary-container': '#1f6306',
+        'on-primary-container': '#94de76',
+        'primary-fixed': '#aaf68b',
+        'primary-fixed-dim': '#8fd972',
+        'on-primary-fixed': '#042100',
+        'on-primary-fixed-variant': '#155200',
+
+        'secondary': '#745b00',
+        'on-secondary': '#ffffff',
+        'secondary-container': '#fecb1e',
+        'on-secondary-container': '#6f5700',
+        'secondary-fixed': '#ffe08d',
+        'secondary-fixed-dim': '#f2c007',
+        'on-secondary-fixed': '#241a00',
+        'on-secondary-fixed-variant': '#584400',
+
+        'tertiary': '#2f4425',
+        'on-tertiary': '#ffffff',
+        'tertiary-container': '#455c3b',
+        'on-tertiary-container': '#b9d3a9',
+        'tertiary-fixed': '#d0ebbf',
+        'tertiary-fixed-dim': '#b4cea5',
+        'on-tertiary-fixed': '#0c2006',
+        'on-tertiary-fixed-variant': '#374d2d',
+
+        'error': '#ba1a1a',
+        'on-error': '#ffffff',
+        'error-container': '#ffdad6',
+        'on-error-container': '#93000a',
+
+        'background': '#f8faf4',
+        'on-background': '#191c19',
+        'surface': '#f8faf4',
+        'on-surface': '#191c19',
+        'surface-bright': '#f8faf4',
+        'surface-dim': '#d9dbd5',
+        'surface-container-lowest': '#ffffff',
+        'surface-container-low': '#f2f4ee',
+        'surface-container': '#edefe8',
+        'surface-container-high': '#e7e9e3',
+        'surface-container-highest': '#e1e3dd',
+        'on-surface-variant': '#41493b',
+        'surface-variant': '#e1e3dd',
+
+        'outline': '#717a6a',
+        'outline-variant': '#c0c9b7',
+        'inverse-surface': '#2e312d',
+        'inverse-on-surface': '#eff1eb',
+        'inverse-primary': '#8fd972',
+        'surface-tint': '#296c11',
+      },
+      fontFamily: {
+        headline: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+        label: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+        serif: ['Merriweather', 'serif'],
+      },
+      spacing: {
+        128: '32rem',
+        144: '36rem',
+        160: '40rem',
+      },
+      borderRadius: {
+        'DEFAULT': '0.25rem',
+        'lg': '0.5rem',
+        'xl': '0.75rem',
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+        '4xl': '2rem',
+        '5xl': '3rem',
+        'full': '9999px',
+      },
+      boxShadow: {
+        'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-out',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio')
+  ],
+};
